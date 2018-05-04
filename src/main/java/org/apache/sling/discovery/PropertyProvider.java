@@ -46,9 +46,10 @@ public interface PropertyProvider {
 	/**
 	 * Retrieves a property that is subsequently set on the local instance
 	 * and broadcast to the <code>TopologyView</code> instances.
-	 * <p>
+	 *
 	 * These properties are non-persistent and disappear after the local instance goes down.
 	 *
+	 * @param name The property name
 	 * @return The value of the property or <code>null</code>. If the property
 	 *         value can't be provided or if the provider does not support this
 	 *         property, it must return <code>null</code>.

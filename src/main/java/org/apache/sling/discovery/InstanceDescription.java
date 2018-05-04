@@ -56,7 +56,7 @@ public interface InstanceDescription {
 
     /**
 	 * Returns the ClusterView of which this instance is part of.
-	 * <p>
+	 *
 	 * Every instance is part of a ClusterView even if it is standalone.
 	 * @return the ClusterView
 	 */
@@ -65,9 +65,9 @@ public interface InstanceDescription {
 	/**
 	 * If an instance is part of a cluster, it can potentially be a leader of that cluster -
 	 * this information is queried here.
-	 * <p>
+	 *
 	 * If an instance is not part of a cluster, this method returns true.
-	 * <p>
+	 *
 	 * Only one instance of a cluster is guaranteed to be the leader at any time.
 	 * This guarantee is provided by this service.
 	 * If the leader goes down, the service elects a new leader and announces it to
@@ -85,17 +85,18 @@ public interface InstanceDescription {
 
     /**
      * The identifier of the running Sling instance.
+	 *
+	 * @return the identifier of this instance
      */
     String getSlingId();
 
     /**
      * Returns the value of a particular property.
-     * <p>
+	 *
      * Note that there are no hard guarantees or requirements as to how quickly
      * a property is available once it is set on a distant instance.
      * @param name The property name
      * @return The value of the property or <code>null</code>
-     * @see DiscoveryService#setProperty(String, String)
      */
     String getProperty(final String name);
 

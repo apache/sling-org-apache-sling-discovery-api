@@ -35,7 +35,7 @@ public interface DiscoveryService {
 	 * <p>
 	 * If for some reason the service is currently not able to do topology discovery
 	 * it will return the last valid topology marked with <code>false</code> in the call
-	 * to <codeTopologyView.isCurrent()</code>. This is also true if the service
+	 * to <code>TopologyView.isCurrent()</code>. This is also true if the service
 	 * has noticed a potential change in the topology and is in the process of
 	 * settling the change in the topology (eg with peers, ie voting).
 	 * <p>
