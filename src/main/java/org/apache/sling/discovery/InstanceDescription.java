@@ -55,44 +55,44 @@ public interface InstanceDescription {
     String PROPERTY_ENDPOINTS = "org.apache.sling.instance.endpoints";
 
     /**
-	 * Returns the ClusterView of which this instance is part of.
-	 *
-	 * Every instance is part of a ClusterView even if it is standalone.
-	 * @return the ClusterView
-	 */
+     * Returns the ClusterView of which this instance is part of.
+     *
+     * Every instance is part of a ClusterView even if it is standalone.
+     * @return the ClusterView
+     */
     ClusterView getClusterView();
 
-	/**
-	 * If an instance is part of a cluster, it can potentially be a leader of that cluster -
-	 * this information is queried here.
-	 *
-	 * If an instance is not part of a cluster, this method returns true.
-	 *
-	 * Only one instance of a cluster is guaranteed to be the leader at any time.
-	 * This guarantee is provided by this service.
-	 * If the leader goes down, the service elects a new leader and announces it to
-	 * TopologyEventListener listeners.
-	 * @return true if this instance is the - only -  leader in this cluster,
-	 * false if it is one of the slaves, or true if it is not at all part of a cluster
-	 */
-	boolean isLeader();
+    /**
+     * If an instance is part of a cluster, it can potentially be a leader of that cluster -
+     * this information is queried here.
+     *
+     * If an instance is not part of a cluster, this method returns true.
+     *
+     * Only one instance of a cluster is guaranteed to be the leader at any time.
+     * This guarantee is provided by this service.
+     * If the leader goes down, the service elects a new leader and announces it to
+     * TopologyEventListener listeners.
+     * @return true if this instance is the - only -  leader in this cluster,
+     * false if it is one of the slaves, or true if it is not at all part of a cluster
+     */
+    boolean isLeader();
 
-	/**
-	 * Determines whether this InstanceDescription is representing the local instance.
-	 * @return whether this InstanceDescription is representing the local instance.
-	 */
-	boolean isLocal();
+    /**
+     * Determines whether this InstanceDescription is representing the local instance.
+     * @return whether this InstanceDescription is representing the local instance.
+     */
+    boolean isLocal();
 
     /**
      * The identifier of the running Sling instance.
-	 *
-	 * @return the identifier of this instance
+     *
+     * @return the identifier of this instance
      */
     String getSlingId();
 
     /**
      * Returns the value of a particular property.
-	 *
+     *
      * Note that there are no hard guarantees or requirements as to how quickly
      * a property is available once it is set on a distant instance.
      * @param name The property name
@@ -106,5 +106,5 @@ public interface InstanceDescription {
      * is not modifiable.
      * @return a Map containing all properties of this instance
      */
-    Map<String,String> getProperties();
+    Map<String, String> getProperties();
 }

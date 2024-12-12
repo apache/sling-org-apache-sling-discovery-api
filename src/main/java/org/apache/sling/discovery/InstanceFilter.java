@@ -22,19 +22,18 @@ import org.osgi.annotation.versioning.ConsumerType;
 
 /**
  * Used to filter InstanceDescriptions in a TopologyView.
- * 
+ *
  * @see TopologyView#findInstances(InstanceFilter)
  */
 @ConsumerType
 public interface InstanceFilter {
 
-	/**
-	 * Returns true if this InstanceFilter selects the given InstanceDescription.
-	 *
-	 * @param instance the InstanceDescription for which to decide if this
-	 * InstanceFilter accepts it or not.
-	 * @return true if this InstanceFilter selects the given InstanceDescription
-	 */
-	boolean accept(InstanceDescription instance);
-
+    /**
+     * Returns true if this InstanceFilter selects the given InstanceDescription.
+     *
+     * @param instance the InstanceDescription for which to decide if this
+     * InstanceFilter accepts it or not.
+     * @return true if this InstanceFilter selects the given InstanceDescription
+     */
+    boolean accept(InstanceDescription instance);
 }

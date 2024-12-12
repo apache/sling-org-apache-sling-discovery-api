@@ -20,17 +20,17 @@ package org.apache.sling.discovery;
 
 /**
  * A topology event is sent whenever a change in the topology occurs.
- * 
+ *
  * This event object might be extended in the future with new event types and
  * methods.
- * 
+ *
  * @see TopologyEventListener
  */
 public class TopologyEvent {
 
     public static enum Type {
         /**
-         * Informs the service about the initial topology state - this is only 
+         * Informs the service about the initial topology state - this is only
          * sent once at bind-time and is the first one a TopologyEventListener
          * receives (after the implementation bundle was activated).
          */
@@ -44,7 +44,7 @@ public class TopologyEvent {
          * <p>
          * After receiving a TOPOLOGY_CHANGING and before receiving a
          * TOPOLOGY_CHANGED event a TopologyEventListener cannot make any
-         * assumptions wrt the topology whatsoever, including whether or not 
+         * assumptions wrt the topology whatsoever, including whether or not
          * the local instance is part of it at all (partitioning).
          * <p>
          * An implementation must always send a TOPOLOGY_CHANGING before a
@@ -61,7 +61,7 @@ public class TopologyEvent {
          * <li>A restart of an instance - or more precisely: when the
          * corresponding implementation bundle is deactivated/activated</li>
          * <li>A cluster structure - either its members or the cluster
-         * view id - changed. The cluster view id changes when an instance joins, 
+         * view id - changed. The cluster view id changes when an instance joins,
          * leaves or was restarted (its bundle deactivated/activated)</li>
          * </ul>
          * <p>
@@ -77,15 +77,13 @@ public class TopologyEvent {
          * This event is sent when otherwise the topology remains identical.
          */
         PROPERTIES_CHANGED
-
     }
 
     private final Type type;
     private final TopologyView oldView;
     private final TopologyView newView;
 
-    public TopologyEvent(final Type type, final TopologyView oldView,
-            final TopologyView newView) {
+    public TopologyEvent(final Type type, final TopologyView oldView, final TopologyView newView) {
         if (type == null) {
             throw new IllegalArgumentException("type must not be null");
         }
@@ -124,7 +122,7 @@ public class TopologyEvent {
 
     /**
      * Returns the type of this event
-     * 
+     *
      * @return the type of this event
      */
     public Type getType() {
@@ -135,7 +133,7 @@ public class TopologyEvent {
      * Returns the view which was valid up until now.
      * <p>
      * This is null in case of <code>TOPOLOGY_INIT</code>
-     * 
+     *
      * @return the view which was valid up until now, or null in case of a fresh
      *         instance start
      */
@@ -147,7 +145,7 @@ public class TopologyEvent {
      * Returns the view which is currently (i.e. newly) valid.
      * <p>
      * This is null in case of <code>TOPOLOGY_CHANGING</code>
-     * 
+     *
      * @return the view which is currently valid, or null in case of
      *         <code>TOPOLOGY_CHANGING</code>
      */
@@ -157,7 +155,6 @@ public class TopologyEvent {
 
     @Override
     public String toString() {
-        return "TopologyEvent [type=" + type + ", oldView=" + oldView
-                + ", newView=" + newView + "]";
+        return "TopologyEvent [type=" + type + ", oldView=" + oldView + ", newView=" + newView + "]";
     }
 }
