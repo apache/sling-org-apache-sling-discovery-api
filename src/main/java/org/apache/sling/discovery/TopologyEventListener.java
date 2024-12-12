@@ -30,37 +30,36 @@ import org.osgi.annotation.versioning.ConsumerType;
 @ConsumerType
 public interface TopologyEventListener {
 
-	/**
-	 * Inform the service about an event in the topology - or in the discovery
-	 * of the topology.
-	 * <p>
-	 * Implementors of this method must ensure that this method returns quickly
-	 * and that no locks are being acquired that could cause deadlocks (ie the
-	 * framework might call this method holding locks).
-	 * <p>
-	 * The <code>TopologyEvent</code> contains details about what changed.
-	 * The supported event types are:
-	 * <ul>
-	 *  <li><code>TOPOLOGY_INIT</code> sent when the <code>TopologyEventListener</code>
-	 *  was first bound to the discovery service - represents the initial state
-	 *  of the topology at that time.</li>
-	 *  <li><code>TOPOLOGY_CHANGING</code> sent when the discovery service
-	 *  discovered a change in the topology and has started to settle the change.
-	 *  This event is sent before <code>TOPOLOGY_CHANGED</code> but is optional</li>
-	 *  <li><code>TOPOLOGY_CHANGED</code> sent when the discovery service
-	 *  discovered a change in the topology and has settled it.</li>
-	 *  <li><code>PROPERTIES_CHANGED</code> sent when the one or many properties
-	 *  have changed in an instance in the current topology</li>
-	 * </ul>
-	 * A note on instance restarts: it is currently not a requirement on the
-	 * discovery service to send a TopologyEvent should an instance restart
-	 * occur rapidly (ie within the change detection timeout). A TopologyEvent
-	 * is only sent if the number of instances or any property changes.
-	 * Should there be a requirement to detect a restart in a guaranteed fashion,
-	 * it is always possible to set a particular property (using the PropertyProvider)
-	 * to the instance start time and have others detect a change in that property.
-	 * @param event The topology event
-	 */
-	void handleTopologyEvent(TopologyEvent event);
-
+    /**
+     * Inform the service about an event in the topology - or in the discovery
+     * of the topology.
+     * <p>
+     * Implementors of this method must ensure that this method returns quickly
+     * and that no locks are being acquired that could cause deadlocks (ie the
+     * framework might call this method holding locks).
+     * <p>
+     * The <code>TopologyEvent</code> contains details about what changed.
+     * The supported event types are:
+     * <ul>
+     *  <li><code>TOPOLOGY_INIT</code> sent when the <code>TopologyEventListener</code>
+     *  was first bound to the discovery service - represents the initial state
+     *  of the topology at that time.</li>
+     *  <li><code>TOPOLOGY_CHANGING</code> sent when the discovery service
+     *  discovered a change in the topology and has started to settle the change.
+     *  This event is sent before <code>TOPOLOGY_CHANGED</code> but is optional</li>
+     *  <li><code>TOPOLOGY_CHANGED</code> sent when the discovery service
+     *  discovered a change in the topology and has settled it.</li>
+     *  <li><code>PROPERTIES_CHANGED</code> sent when the one or many properties
+     *  have changed in an instance in the current topology</li>
+     * </ul>
+     * A note on instance restarts: it is currently not a requirement on the
+     * discovery service to send a TopologyEvent should an instance restart
+     * occur rapidly (ie within the change detection timeout). A TopologyEvent
+     * is only sent if the number of instances or any property changes.
+     * Should there be a requirement to detect a restart in a guaranteed fashion,
+     * it is always possible to set a particular property (using the PropertyProvider)
+     * to the instance start time and have others detect a change in that property.
+     * @param event The topology event
+     */
+    void handleTopologyEvent(TopologyEvent event);
 }

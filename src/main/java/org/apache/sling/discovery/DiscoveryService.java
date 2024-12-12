@@ -30,24 +30,23 @@ import org.osgi.annotation.versioning.ProviderType;
 @ProviderType
 public interface DiscoveryService {
 
-	/**
-	 * Returns the topology that was last discovered by this service.
-	 * <p>
-	 * If for some reason the service is currently not able to do topology discovery
-	 * it will return the last valid topology marked with <code>false</code> in the call
-	 * to <code>TopologyView.isCurrent()</code>. This is also true if the service
-	 * has noticed a potential change in the topology and is in the process of
-	 * settling the change in the topology (eg with peers, ie voting).
-	 * <p>
-	 * Note that this call is synchronized with <code>TopologyEventListener.handleTopologyEvent()</code>
-	 * calls: ie if calls to <code>TopologyEventListener.handleTopologyEvent()</code> are currently
-	 * ongoing, then the call to this method will block until all <code>TopologyEventListener</code>s
-	 * have been called. Be careful not to cause deadlock situations.
-	 * <p>
-	 * @return the topology that was last discovered by this service. This will never
-	 * be null (ie even if a change in the topology is ongoing at the moment or the
-	 * cluster consists only of the local instance).
-	 */
+    /**
+     * Returns the topology that was last discovered by this service.
+     * <p>
+     * If for some reason the service is currently not able to do topology discovery
+     * it will return the last valid topology marked with <code>false</code> in the call
+     * to <code>TopologyView.isCurrent()</code>. This is also true if the service
+     * has noticed a potential change in the topology and is in the process of
+     * settling the change in the topology (eg with peers, ie voting).
+     * <p>
+     * Note that this call is synchronized with <code>TopologyEventListener.handleTopologyEvent()</code>
+     * calls: ie if calls to <code>TopologyEventListener.handleTopologyEvent()</code> are currently
+     * ongoing, then the call to this method will block until all <code>TopologyEventListener</code>s
+     * have been called. Be careful not to cause deadlock situations.
+     * <p>
+     * @return the topology that was last discovered by this service. This will never
+     * be null (ie even if a change in the topology is ongoing at the moment or the
+     * cluster consists only of the local instance).
+     */
     TopologyView getTopology();
-
 }
